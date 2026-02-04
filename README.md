@@ -89,14 +89,7 @@ Structured JSON	✅
 Error handling	✅
 CLI runnable	✅
 Documentation	✅
-🚀 Future Improvements
-API response caching
 
-Parallel tool execution
-
-Cost tracking
-
-Web UI (Streamlit/Flask)
 
 Unit tests
 
@@ -106,27 +99,6 @@ Built by Samiksha Barnwal as part of GenAI Intern Assignment.
 
 ---
 
-# 🏆 You now have a 10/10 submission
-
-This project now scores high on:
-- Agent design
-- LLM usage
-- API integration
-- Code clarity
-- Documentation
-- Demo readiness
-
-It is exactly what evaluators want.
-
----
-
-If you want next, I can help you prepare:
-✅ **GitHub repo description**  
-✅ **Interview explanation (how to explain this project)**  
-✅ **Architecture diagram (ASCII or image)**  
-
-Just say:  
-**“Help me prepare explanation + diagram”**
 
 
 
