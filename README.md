@@ -1,65 +1,105 @@
-# 🤖 GenAI Ops Assistant
+🤖 AI Operations Assistant (GenAI Multi-Agent System)
+📌 Overview
 
-An AI Operations Assistant that accepts natural language tasks, plans steps using an LLM, executes real APIs, and returns a structured verified answer.
+This project implements a Multi-Agent AI Operations Assistant that accepts a natural language query, generates a structured plan using an LLM, executes real API calls, verifies the results, and returns a clean structured response.
 
-Built as part of the **24-Hour GenAI Intern Assignment – AI Operations Assistant**.
+It demonstrates:
 
----
+Agent-based reasoning (Planner, Executor, Verifier)
 
-## 📌 Features
+LLM-powered planning and validation
 
-- Multi-agent architecture:
-  - Planner Agent (LLM reasoning)
-  - Executor Agent (API calls)
-  - Verifier Agent (output validation)
-- Integrates real APIs:
-  - WeatherAPI (https://www.weatherapi.com/)
-  - GitHub API
-- Uses Groq LLM (LLaMA 3.3 70B)
-- Structured JSON planning and output
-- CLI-based execution
-- Error handling and logging
+Integration with real third-party APIs
 
----
+End-to-end runnable CLI application
 
-## 📁 Project Structure
+This project fulfills the requirements of the 24-Hour GenAI Intern Assignment – AI Operations Assistant.
 
+🏗️ Architecture
+User Query
+   ↓
+Planner Agent (LLM → JSON plan)
+   ↓
+Executor Agent (API calls)
+   ↓
+Verifier Agent (LLM validation)
+   ↓
+Final Structured Output
+
+Agents:
+
+Planner Agent: Converts user input into a structured JSON plan with required tools.
+
+Executor Agent: Executes each step by calling the appropriate API tool.
+
+Verifier Agent: Validates results, fixes formatting, and ensures correct structured output.
+
+🔌 APIs & Tools Used
+
+WeatherAPI – Fetches real-time weather data
+https://www.weatherapi.com/api-explorer.aspx
+
+GitHub Search API – Searches repositories by keyword
+
+Groq LLM API (OpenAI compatible) – Used for:
+
+Planning (Planner Agent)
+
+Verification & formatting (Verifier Agent)
+
+📁 Project Structure
 ai_ops_assistant/
 ├── agents/
-│ ├── init.py
-│ ├── planner.py
-│ ├── executor.py
-│ └── verifier.py
+│   ├── __init__.py
+│   ├── planner.py
+│   ├── executor.py
+│   └── verifier.py
 ├── tools/
-│ ├── init.py
-│ ├── weather_tool.py
-│ └── github_tool.py
+│   ├── __init__.py
+│   ├── weather_tool.py
+│   └── github_tool.py
 ├── llm/
-│ ├── init.py
-│ └── client.py
+│   ├── __init__.py
+│   └── client.py
 ├── main.py
 ├── requirements.txt
-├── .env.example
-└── README.md
+├── README.md
+├── LICENSE
+└── .gitignore
 
+⚙️ Installation & Setup
+1️⃣ Clone the repository
+git clone https://github.com/wildtigress/ai_ops_assistant.git
+cd ai_ops_assistant
 
----
+2️⃣ Create virtual environment (optional but recommended)
+python -m venv venv
+venv\Scripts\activate   # Windows
 
-## ⚙️ Setup Instructions
-
-1. Clone the repository
-2. Create a virtual environment
-3. Install dependencies:
-
-```bash
+3️⃣ Install dependencies
 pip install -r requirements.txt
-Create .env file from .env.example:
 
-GROQ_API_KEY=your_groq_key
+4️⃣ Create .env file
+
+Create a .env file in project root:
+
+GROQ_API_KEY=your_groq_api_key
 WEATHER_API_KEY=your_weatherapi_key
-▶️ Run the Project
+
+▶️ Usage (CLI)
+
+Run the assistant from command line:
+
+python main.py "Your query here"
+
+🧪 Example Queries
+python main.py "What is the weather in London?"
+
+python main.py "Find GitHub repositories about weather APIs"
+
 python main.py "What is the weather in Paris and find GitHub projects about weather APIs"
-🧠 Example Output
+
+📤 Sample Output
 {
   "status": "success",
   "answer": {
@@ -78,28 +118,51 @@ python main.py "What is the weather in Paris and find GitHub projects about weat
     ]
   }
 }
-✅ Assignment Requirements Mapping
-Requirement	Implemented
-Planner Agent	✅
-Executor Agent	✅
-Verifier Agent	✅
-LLM usage	✅ Groq
-Real APIs	✅ WeatherAPI + GitHub
-Structured JSON	✅
-Error handling	✅
-CLI runnable	✅
-Documentation	✅
 
+🧠 Error Handling
 
-Unit tests
+API failures are handled gracefully
+
+Partial results are returned if one tool fails
+
+Verifier Agent ensures JSON output correctness
+
+LLM retries invalid structured outputs
+
+🚀 Features
+
+Multi-agent architecture (Planner, Executor, Verifier)
+
+Real-time API integration
+
+LLM-powered planning & validation
+
+CLI interface
+
+Clean structured JSON output
+
+Secure environment variable handling
+
+🔮 Future Improvements
+
+Caching API responses
+
+Parallel tool execution
+
+Cost tracking per request
+
+Streamlit or FastAPI UI
+
+Logging dashboard
+
+Request history
+
+📜 License
+
+This project is licensed under the MIT License.
+See the LICENSE file for details.
 
 👩‍💻 Author
-Built by Samiksha Barnwal as part of GenAI Intern Assignment.
 
-
----
-
-
-
-
-
+Samiksha Barnwal
+GitHub: https://github.com/wildtigress
